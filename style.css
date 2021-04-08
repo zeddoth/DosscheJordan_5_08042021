@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Aladin&family=Audiowide&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, Arial, sans-serif;
+}
+strong {
+  font-weight: normal;
+}
+.navbar {
+  display: flex;
+  height: 5rem;
+  background-color: rgb(39, 36, 36);
+  align-items: center;
+}
+.navbar_logo {
+  width: 80%;
+}
+.navbar_spacing {
+  height: 3rem;
+  width: 1px;
+  background-color: rgb(100, 100, 100);
+  margin-left: 1rem;
+  margin-right: 3rem;
+}
+.navbar_logo_h1 {
+  font-size: 2.5rem;
+  margin-left: 1rem;
+  color: white;
+  font-family: Audiowide, Arial;
+}
+.navbar_link {
+  color: white;
+  text-decoration: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.navbar_link:visited {
+  color: white;
+  text-decoration: none;
+}
+.navbar_links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.underline {
+  text-decoration: underline;
+}
+.white {
+  color: white;
+}
+.camera-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  background-color: rgba(0, 0, 0, 0.03);
+  border: rgba(0, 0, 0, 0.1) solid 1px;
+  margin: 1rem;
+  padding: 1rem;
+  min-width: 32px;
+  /* grid-column: 1 / -1; */
+}
+.camera-name {
+  text-decoration: underline;
+}
+.camera-price {
+  font-weight: 400;
+}
+.camera-img {
+  width: 50%;
+  object-fit: contain;
+  object-position: center;
+  border: dotted 1px rgba(0, 0, 0, 0.3);
+}
+.presentation {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
+.articles_h3 {
+  margin-left: 1rem;
+  text-decoration: underline;
+}
+#results {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.footer {
+  display: flex;
+}
