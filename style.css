@@ -12,16 +12,13 @@ strong {
   height: 5rem;
   background-color: rgb(39, 36, 36);
   align-items: center;
-}
-.navbar_logo {
-  width: 80%;
+  justify-content: space-between;
 }
 .navbar_spacing {
   height: 3rem;
   width: 1px;
   background-color: rgb(100, 100, 100);
-  margin-left: 1rem;
-  margin-right: 3rem;
+  margin-right: 1rem;
 }
 .navbar_logo_h1 {
   font-size: 2.5rem;
@@ -87,7 +84,7 @@ strong {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
 
