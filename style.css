@@ -119,3 +119,9 @@ strong {
   padding-left: 1rem;
   text-decoration: underline;
 }
+
+@media screen and (max-width: 750px) {
+  .navbar_logo_h1 {
+    font-size: 1.5rem;
+  }
+}
