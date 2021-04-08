@@ -93,4 +93,32 @@ strong {
 
 .footer {
   display: flex;
+  height: 8rem;
+  background-color: rgb(39, 36, 36);
+  padding: 1rem;
+}
+.footer_link {
+  color: white;
+  text-decoration: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.footer_link:visited {
+  color: white;
+  text-decoration: none;
+}
+.footer_about {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5%;
+}
+.footer_contact {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5%;
+}
+.footer_h2 {
+  color: white;
+  padding-left: 1rem;
+  text-decoration: underline;
 }

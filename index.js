@@ -10,7 +10,6 @@ const fetchCameras = async() => {
 
 const showCameras = async() => {
     await fetchCameras();
-    
     results.innerHTML = (
 
         cameras
@@ -21,7 +20,7 @@ const showCameras = async() => {
                 <li class="camera-item"> 
                     <div class="camera-infos">
                         <h3 class="camera-name"><strong>${camera.name}</strong></h3>
-                        <h2 class="camera-price"><strong>${numberWithSpace(camera.price)} €</strong></h2>
+                        <h2 class="camera-price"><strong>${numberWithSpace(camera.price /= 100)} €</strong></h2>
                     </div>
                     <img class="camera-img" src="${camera.imageUrl}" />
                 </li>
