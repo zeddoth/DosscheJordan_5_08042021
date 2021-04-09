@@ -17,6 +17,7 @@ const showCameras = async() => {
             .map(camera => (
 
                 `
+                <a class="camera-link" href="description.html?id=${camera._id}">
                 <li class="camera-item"> 
                     <div class="camera-infos">
                         <h3 class="camera-name"><strong>${camera.name}</strong></h3>
@@ -24,7 +25,7 @@ const showCameras = async() => {
                     </div>
                     <img class="camera-img" src="${camera.imageUrl}" />
                 </li>
-
+                </a>
                 `
             )).join("")
     );
