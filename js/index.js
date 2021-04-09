@@ -13,7 +13,6 @@ const showCameras = async() => {
     results.innerHTML = (
 
         cameras
-            .filter(camera => camera.name.toLowerCase())
             .map(camera => (
 
                 `
