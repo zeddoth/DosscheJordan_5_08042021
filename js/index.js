@@ -1,15 +1,12 @@
 const results = document.getElementById("results");
-
 let cameras;
 
-//API REQUEST
-
+//APPEL DE L'API
 const fetchCameras = async() => {
     cameras = await fetch("http://localhost:3000/api/cameras").then(res => res.json());
 };
 
 //ON AFFICHE LES PRODUITS
-
 const showCameras = async() => {
     await fetchCameras();
     results.innerHTML = (
@@ -31,11 +28,9 @@ const showCameras = async() => {
             )).join("")
     );
 };
-
 showCameras();
 
 //FONCTION DE SEPARATION DES NOMBRES
-
 function numberWithSpace(x){
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
