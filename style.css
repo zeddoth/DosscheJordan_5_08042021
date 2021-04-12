@@ -7,6 +7,11 @@ body {
 strong {
   font-weight: normal;
 }
+hr {
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
 .navbar {
   display: flex;
   height: 5rem;
@@ -86,6 +91,13 @@ strong {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
+}
+.product {
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+.product_img_container {
+  width: 50%;
 }
 
 .footer {

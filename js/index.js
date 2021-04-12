@@ -5,8 +5,10 @@ let cameras;
 //API REQUEST
 
 const fetchCameras = async() => {
-    cameras = await fetch("https://ab-p5-api.herokuapp.com/api/cameras").then(res => res.json());
+    cameras = await fetch("http://localhost:3000/api/cameras").then(res => res.json());
 };
+
+//ON AFFICHE LES PRODUITS
 
 const showCameras = async() => {
     await fetchCameras();
@@ -31,6 +33,8 @@ const showCameras = async() => {
 };
 
 showCameras();
+
+//FONCTION DE SEPARATION DES NOMBRES
 
 function numberWithSpace(x){
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');

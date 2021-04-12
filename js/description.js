@@ -11,8 +11,10 @@ let product;
 //API REQUEST
 
 const fetchProduct = async() => {
-    product = await fetch("https://ab-p5-api.herokuapp.com/api/cameras/" + id).then(res => res.json());
+    product = await fetch("http://localhost:3000/api/cameras/" + id).then(res => res.json());
 };
+
+//ON AFFICHE LE PRODUIT
 
 const showProduct = async() => {
     await fetchProduct();
@@ -21,17 +23,21 @@ const showProduct = async() => {
                 `
                 <div class="product"> 
                     <div class="product_infos">
-                        <h3 class="product-name"><strong>${product.name}</strong></h3>
-                        <h2 class="product-price"><strong>${numberWithSpace(product.price /= 100)} €</strong></h2>
-                        <select name="lenses" id="lens-select">
-                            <option value="">--Choissisez une lentille-</option>
-                        </select>
-                    <p class="product-description">Description :</br>${product.description}</p>
+                        <h3 class="product_name"><strong>${product.name}</strong></h3>
+                        <h2 class="product_price"><strong>${numberWithSpace(product.price /= 100)} €</strong></h2>
+                        <form>
+                            <label for="lens-select">Lentilles :</label>
+                                <select name="lens-select" id="lens-select">
+                                    <option>--Choissisez une lentille-</option>
+                                </select>
+                        </form>
+                        <p class="product-description">Description :</br>${product.description}</p>
                     </div>
-                    <img class="prodcut-img" src="${product.imageUrl}" />
+                    <div class="product_img">
+                        <img class="product_img_container" src="${product.imageUrl}" />
+                    </div>
                     <button id="add_to_cart">Ajouter au panier</button>
-
-
+                    
                 </div>
                 `
                 
@@ -44,6 +50,20 @@ const showProduct = async() => {
 
 showProduct();
 
+//FONCTION DE SEPARATION DES NOMBRES
+
 function numberWithSpace(x){
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
+
+
+//GESTION DU PANIER
+
+//RECUPERATION DES DONNEES SELECTIONEES PAR L'UTILISATEUR & ENVOIE DU PANIER
+
+//SELECTION DE L'ID DU FORMULAIRE (OPTION)
+
+const idForm = document.getElementById("lens-select");
+console.log(idForm);
+
+
