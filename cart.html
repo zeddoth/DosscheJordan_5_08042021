@@ -29,6 +29,84 @@
         <h2>Votre panier</h2>
       </section>
       <hr />
+      <div class="cart">
+        <table class="tftable">
+          <thead>
+            <th>Photo</th>
+            <th>Designation</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+            <th>Sous-Total</th>
+            <th><i class="fas fa-trash-alt fa-2x"></i></th>
+          </thead>
+          <tfoot>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Quantité totale : 3</th>
+            <th>Total : 30 €</th>
+            <th></th>
+          </tfoot>
+          <tr>
+            <td>
+              <img
+                class="tftable-img"
+                src="./imgs/f93fa330c3d76ccb5b0fa94e6d10e3cf.png"
+                alt="Photo correspondant au produit"
+              />
+            </td>
+            <td>
+              <h3 class="tftable-mobile">Designation :</h3>
+              Hamburger
+            </td>
+            <td>
+              <h3 class="tftable-mobile">Prix :</h3>
+              10 €
+            </td>
+            <td>
+              <h3 class="tftable-mobile">Quantité :</h3>
+              <i class="fas fa-minus-square fa-lg"></i> 3 <i class="fas fa-plus-square fa-lg"></i>
+            </td>
+            <td>
+              <h3 class="tftable-mobile">Sous-Total :</h3>
+              30 €
+            </td>
+            <td class="tftable-trash"><i class="far fa-times-circle fa-2x"></i></td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                class="tftable-img"
+                src="./imgs/Kibble.png"
+                alt="Photo correspondant au produit"
+              />
+            </td>
+            <td>
+              <h3 class="tftable-mobile">Designation :</h3>
+              Kibble
+            </td>
+            <td>
+              <h3 class="tftable-mobile">Prix :</h3>
+              10 €
+            </td>
+            <td>
+              <h3 class="tftable-mobile">Quantité :</h3>
+              <i class="fas fa-minus-square fa-lg"></i> 3 <i class="fas fa-plus-square fa-lg"></i>
+            </td>
+            <td>
+              <h3 class="tftable-mobile">Sous-Total :</h3>
+              30 €
+            </td>
+            <td class="tftable-trash"><i class="far fa-times-circle fa-2x"></i></td>
+          </tr>
+          <tr></tr>
+        </table>
+        <div class="cart_price_total">
+          <h2>Total :</h2>
+          <p>30 €</p>
+        </div>
+        <button type="submit" name="checkout-cart">Passez la commande</button>
+      </div>
     </main>
     <footer class="footer">
       <div class="footer_contact">
@@ -43,6 +121,6 @@
         <a class="footer_link" href="#">Fonctionnement du site</a>
       </div>
     </footer>
-    <script type="text/javascript" src="cart.js"></script>
+    <script type="text/javascript" src="./js/cart.js"></script>
   </body>
 </html>

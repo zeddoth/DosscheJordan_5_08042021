@@ -1,8 +1,8 @@
 //RECUPERATION DU PRODUIT PAR SON URL?ID=
-const queryString_url_id = window.location.search;
+const urlParams = new URLSearchParams(window.location.search);
 
 //ON EXTRAIT JUSTE L'ID
-const id = queryString_url_id.slice(4);
+const id = urlParams.get('id');
 const results_product = document.getElementById("product_description");
 let product;
 
@@ -81,8 +81,17 @@ const cart = async () => {
         }
         let productSavedInLs = JSON.parse(localStorage.getItem("product"));
         const addProductInLs = () =>{
+            let newProduct = 1;
+            for (let i = 0; i < productSavedInLs.length; i++) {
+                if(productSavedInLs[i]._id === optionsProduct._id){
+                    productSavedInLs[i].quantity++;
+                    newProduct = 0;
+                }
+            }
             //AJOUT DANS LE TABLEAU "optionsProduct" LES VALEURS CHOISI PAR L'UTILISATEUR
-            productSavedInLs.push(optionsProduct);
+            if(newProduct === 1){
+                productSavedInLs.push(optionsProduct);
+            }
             //CONVERTIR LES DONNEES AU FORMAT JSON QUI SONT DANS LE LOCALSTORAGE EN JAVASCRIPT
             localStorage.setItem("product", JSON.stringify(productSavedInLs));
         }
@@ -102,12 +111,3 @@ const cart = async () => {
 
 }
 cart();
-
-
-
-
-const lsCart = async () => {
-    await cart();
-
-}
-lsCart();
