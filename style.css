@@ -123,8 +123,9 @@ hr {
   margin-bottom: 1rem;
 }
 .tftable-img {
-  width: 100px;
+  width: 150px;
   height: auto;
+  border: rgb(114, 114, 114) 3px ridge;
 }
 .tftable th {
   font-size: 12px;

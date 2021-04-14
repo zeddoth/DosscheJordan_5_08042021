@@ -68,7 +68,8 @@ const cart = async () => {
             _id: product._id,
             lenses: choixForm,
             quantity: 1,
-            price: product.price
+            price: product.price,
+            photo: product.imageUrl
         }
         console.log(optionsProduct);
         //CREATION DU POPUP DE CONFIRMATION
@@ -98,13 +99,13 @@ const cart = async () => {
         //SI DES PRODUITS SONT DEJA PRESENT DANS LE PANIER(ls)
         if(productSavedInLs){
             addProductInLs();
-            popupConfirm();
+            // popupConfirm();
         }
         //SINON SI AUCUN PRODUIT EST DANS LE PANIER(ls)
         else{
             productSavedInLs = [];
             addProductInLs();
-            popupConfirm();
+            // popupConfirm();
         };
     });
         
