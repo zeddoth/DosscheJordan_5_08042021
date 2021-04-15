@@ -112,6 +112,9 @@ hr {
 .tftable-mobile {
   display: none;
 }
+#tftable_quantity {
+  padding: 1rem;
+}
 .tftable {
   font-size: 12px;
   color: #fbfbfb;
