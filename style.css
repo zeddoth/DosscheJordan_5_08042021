@@ -247,6 +247,27 @@ hr {
   max-width: 250px;
   width: 100%;
 }
+.order_completed_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  width: 25%;
+  background-color: #171515;
+  font-size: 1rem;
+  color: white;
+  height: 50px;
+  transition: 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.order_completed_btn:hover {
+  transition: 0.3s;
+  transform: scale(1.05);
+  background-color: #272626;
+}
 .footer {
   display: flex;
   background-color: rgb(39, 36, 36);

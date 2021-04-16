@@ -1,4 +1,4 @@
-//on cible le "localStorage" pour pouvoir travailler dessus
+//on cible le "localStorage" pour pouvoir travailler avec
 let productSavedInLs = JSON.parse(localStorage.getItem("product"));
 
 //************affichage des produits dans le panier*************
