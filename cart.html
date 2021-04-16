@@ -26,7 +26,7 @@
     </header>
     <main>
       <section class="presentation">
-        <h2>Votre panier</h2>
+        <h2>Récapitulatif de votre panier : </h2>
       </section>
       <hr />
       <div class="cart">
@@ -44,19 +44,49 @@
             <th></th>
             <th></th>
             <th>Quantité totale : <span id="total_quantity"></span></th>
-            <th>Total : <span id="total_price"></span> €</th>
-            <th></th>
+            <th>Total : <span class="total_price"></span> €</th>
+            <th><i class="far fa-times-circle fa-2x" id="delete_products"></i></th>
           </tfoot>
           <tbody id="cart_product"></tbody>
         </table>
         <div class="cart_price_total">
+          <h2>Quantité totale :</h2>
+          <p><span id="total_quantity"></span></p>
           <h2>Total :</h2>
-          <p>30 €</p>
+          <p><span class="total_price"></span> €</p>
         </div>
-        <div class="cart_form">
-          <form></form>
+
+        <div class="cart_form_container">
+          <img src="./imgs/delivery-box.svg" alt="carton pour une commande">
+          <div class="cart_form">
+            <h2>Passez nous une commande :</h1>
+              <!-- <form> -->
+            <div>
+              <label for="firstname" class="label">Prénom : </label>
+              <input type="text" name="firstname" id="firstname" class="input" required=""/>
+            </div>
+            <div>
+              <label for="lastname" class="label">Nom : </label>
+              <input type="text" name="lastname" id="lastname" class="input" required="" />
+            </div>
+            <div>
+              <label for="email" class="label">Adresse e-mail : </label>
+              <input type="email" name="email" id="email" class="input" required="" />
+            </div>
+            <div>
+              <label for="address" class="label">Adresse : </label>
+              <input type="text" name="address" id="address" class="input" required="" />
+            </div>
+            <div>
+              <label for="city" class="label">Ville : </label>
+              <input type="text" name="city" id="city" class="input" required="" />
+            </div>
+            <button type="submit" name="checkout-cart" class="cart_form_btn_order" id="confirm_order">
+              Passez la commande
+            </button>
+          <!-- </form> -->
+          </div>
         </div>
-        <button type="submit" name="checkout-cart">Passez la commande</button>
       </div>
     </main>
     <footer class="footer">
