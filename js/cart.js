@@ -94,8 +94,6 @@ const totalOfProduct = () => {
   }
   for (let i = 0; i < totalPrice.length && i < totalQuantity.length; i++) {
     totalPrice[i].innerHTML = numberWithSpace(sumPrice);
-    totalPrice[i].innerHTML = numberWithSpace(sumPrice);
-    totalQuantity[i].innerHTML = sumQuantity;
     totalQuantity[i].innerHTML = sumQuantity;
   }
   if (sumQuantity === 0) {

@@ -13,29 +13,33 @@ const fetchProduct = async () => {
 function numberWithSpace(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
-
 //on affiche le produit
 const showProduct = async () => {
   await fetchProduct();
   results_product.innerHTML = `
+        <div class="product_img">
+          <img class="product_img_container" src="${product.imageUrl}" alt="appareil ${
+    product.name
+  }"/>
+        </div>
         <div class="product"> 
         <div class="product_infos">
-                <h3 class="product_name"><strong>${product.name}</strong></h3>
+                <h1 class="product_name"><strong>${product.name}</strong></h1>
                 <h2 class="product_price"><strong>${numberWithSpace(
                   (product.price /= 100)
                 )} €</strong></h2>
                 <form>
-                    <label for="lens-select">Lentilles :</label>
+                    <label for="lens-select"><p>Lentilles :</p></label>
                         <select id="lens-select" name="lens-select">
                         </select>
                 </form>
-                <p class="product-description">Description :</br>${product.description}</p>
+                <p class="product-description">Description : </p>
+                <p>${product.description}</p>
             </div>
-            <div class="product_img">
-                <img class="product_img_container" src="${product.imageUrl}" />
+            <button type="submit" id="add_to_cart" name="add_to_cart" onclick="deleteStyle()"><h3>Ajouter au panier</h3></button>
+            <div id="add_confirm" class="add_confirm">
+              <h3>Votre produit a été ajouté au panier</h3>
             </div>
-            <button type="submit" id="add_to_cart" name="add_to_cart">Ajouter au panier</button>
-
         </div>
                 `;
   for (i = 0; i < product.lenses.length; i++) {
@@ -43,8 +47,8 @@ const showProduct = async () => {
       product.lenses[i]
     }</option>`;
   }
+  document.title += ` ${product.name}`;
 };
-showProduct();
 //--------------------------------------gestion du panier--------------------------------------
 //*ls = localStorage
 //récuperation des données selectionner par l'utilisateur & envoie au panier
@@ -55,6 +59,7 @@ const cart = async () => {
   const idForm = document.querySelector("#lens-select");
   const addToCartBtn = document.querySelector("#add_to_cart");
   const cartBubble = document.querySelector(".cart_bubble");
+  const addedToCart = document.querySelector(".add_confirm");
   //quand je clique sur le bouton "ajouter au panier"
   addToCartBtn.addEventListener("click", (event) => {
     event.preventDefault();
@@ -107,8 +112,9 @@ const cart = async () => {
         sumQuantity += productSavedInLs[i].quantity;
       }
     }
-    cartBubble.style.display = "block";
+    cartBubble.style.display = "flex";
     totalQuantitySpan.innerHTML = sumQuantity;
+    addedToCart.style.animation = "pop 3s";
   });
 };
 cart();

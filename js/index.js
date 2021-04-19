@@ -14,16 +14,16 @@ const showCameras = async () => {
       (camera) =>
         `
                 <li class="camera-item"> 
-                <a class="camera-link" href="description.html?id=${camera._id}">
-                    <div class="camera-infos">
-                        <h3 class="camera-name"><strong>${camera.name}</strong></h3>
-                        <h2 class="camera-price"><strong>${numberWithSpace(
-                          (camera.price /= 100)
-                        )} €</strong></h2>
-                    </div>
+                  <a class="camera-link" href="description.html?id=${camera._id}">
+                      <div class="camera-infos">
+                          <h3 class="camera-name"><strong>${camera.name}</strong></h3>
+                          <h2 class="camera-price"><strong>${numberWithSpace(
+                            (camera.price /= 100)
+                          )} €</strong></h2>
+                      </div>
                     
-        </a>
-        <img class="camera-img" src="${camera.imageUrl}" alt="appareil ${camera.name}" />
+                  </a>
+                  <img class="camera-img" src="${camera.imageUrl}" alt="appareil ${camera.name}" />
                 </li>
                 
                 `
