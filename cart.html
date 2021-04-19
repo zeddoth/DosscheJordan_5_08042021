@@ -13,14 +13,16 @@
     <header>
       <nav class="navbar">
         <div class="navbar_logo">
-          <h1 class="navbar_logo_h1">Orinoco</h1>
+          <h1 class="navbar_logo_h1"><img class="navbar_logo_h1_include"src="./imgs/lens.svg" alt="lentille d'appareil photo">rinoco</h1>
         </div>
         <div class="navbar_links">
           <a class="navbar_link" href="index.html">Accueil</a>
           <a class="navbar_link" href="contact.html">Contact</a>
           <div class="navbar_spacing"></div>
           <i class="fas fa-shopping-cart white"> </i>
-          <a class="navbar_link underline" href="cart.html">Panier</a>
+          <a class="navbar_link underline cart-span" href="cart.html"
+            >Panier<span class="cart_bubble" id="cart_total_quantity"></span
+          ></a>
         </div>
       </nav>
     </header>
@@ -40,12 +42,10 @@
             <th><i class="fas fa-trash-alt fa-2x"></i></th>
           </thead>
           <tfoot>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th colspan="3"></th>
             <th>Quantité totale : <span id="total_quantity"></span></th>
             <th>Total : <span class="total_price"></span> €</th>
-            <th><i class="far fa-times-circle fa-2x" id="delete_products"></i></th>
+            <th><i class="far fa-times-circle fa-2x" id="delete_products" title="Tout supprimer"></i></th>
           </tfoot>
           <tbody id="cart_product"></tbody>
         </table>

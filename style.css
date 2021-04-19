@@ -24,7 +24,14 @@ hr {
   background-color: rgb(100, 100, 100);
   margin-right: 1rem;
 }
+.navbar_logo_h1_include {
+  filter: invert(1);
+  height: 2.5rem;
+  margin-right: 1px;
+}
 .navbar_logo_h1 {
+  align-items: center;
+  display: flex;
   font-size: 2.5rem;
   margin-left: 1rem;
   color: white;
@@ -129,6 +136,7 @@ hr {
   margin-bottom: 1rem;
 }
 .tftable-img {
+  border-radius: 1rem;
   width: 150px;
   height: auto;
   border: rgb(114, 114, 114) 3px ridge;
@@ -155,6 +163,36 @@ hr {
 .tftable tr:hover {
   background-color: #171515;
 }
+.fa-times-circle {
+  transition: 0.3s;
+  cursor: pointer;
+}
+.fa-times-circle:hover {
+  color: rgb(200, 0, 0);
+  transition: 0.3s;
+}
+.fa-minus-square {
+  transition: 0.3s;
+  cursor: pointer;
+}
+.fa-minus-square:hover {
+  color: rgb(200, 0, 0);
+  transition: 0.3s;
+}
+.fa-minus-square:active {
+  color: white;
+}
+.fa-plus-square {
+  transition: 0.3s;
+  cursor: pointer;
+}
+.fa-plus-square:hover {
+  color: green;
+  transition: 0.3s;
+}
+.fa-plus-square:active {
+  color: white;
+}
 .cart_price_total {
   display: none;
   color: white;
@@ -164,6 +202,16 @@ hr {
   align-items: center;
   width: 100%;
   margin-bottom: 1rem;
+}
+.cart_empty {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 3rem;
+  border-radius: 1rem;
+}
+.cart_empty img {
+  max-width: 250px;
+  width: 100%;
 }
 .cart_price_total:hover {
   background-color: #171515;
@@ -186,6 +234,7 @@ hr {
   justify-content: center;
   display: flex;
   flex-direction: column;
+  min-width: 325px;
 }
 .cart_form div {
   display: flex;
@@ -229,7 +278,29 @@ hr {
   transform: scale(1.1);
   background-color: #272626;
 }
-
+.cart-span {
+  position: relative;
+}
+.cart_bubble {
+  text-align: center;
+  height: 1rem;
+  width: 1rem;
+  background-color: green;
+  top: -1.5rem;
+  right: 0.5rem;
+  padding: 5px;
+  border-radius: 100%;
+  font-size: 0.8rem;
+  position: absolute;
+}
+.contact_form_container {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 3rem;
+  margin: 2rem;
+  border-radius: 1rem;
+}
 .order_completed {
   border-radius: 1rem;
   background-color: rgba(0, 0, 0, 0.05);
@@ -254,11 +325,10 @@ hr {
   border-radius: 1rem;
   margin-top: 2rem;
   padding: 1rem;
-  width: 25%;
   background-color: #171515;
   font-size: 1rem;
   color: white;
-  height: 50px;
+  height: 2rem;
   transition: 0.3s;
   cursor: pointer;
   text-decoration: none;
@@ -347,5 +417,8 @@ hr {
   }
   #results {
     grid-template-columns: 1fr;
+  }
+  footer a {
+    height: 3rem;
   }
 }

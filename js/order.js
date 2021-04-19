@@ -9,12 +9,13 @@ const showOrder = () => {
         <h2>Merci ${orderSavedInLs.contact.firstName} pour votre commande et votre confiance</h2>
         <p>
         Vous recevrez prochainement une facture par mail
-        <br>
-        <br>
-        Votre n° de commande : <h4>${orderSavedInLs.orderId}</h4>
         </p>
+        <p>
+        Votre n° de commande : 
+        </p>
+        <h4>${orderSavedInLs.orderId}</h4>
         <div class="order_completed_img">
-            <img src="./imgs/package.svg" alt="carton avec une main">
+            <img src="./imgs/package.svg" alt="carton qui s'envole">
         </div>
         <a class="order_completed_btn" href="./index.html">Retourner à l'acceuil</a>
     </div>
