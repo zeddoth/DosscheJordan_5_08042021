@@ -7,7 +7,9 @@ let product;
 
 //appel de l'API
 const fetchProduct = async () => {
-  product = await fetch("http://localhost:3000/api/cameras/" + id).then((res) => res.json());
+  product = await fetch("http://localhost:3000/api/cameras/" + id)
+    .then((res) => res.json())
+    .catch(() => console.log("erreur lié à l'API"));
 };
 //fonction de séparation des nombres
 function numberWithSpace(x) {

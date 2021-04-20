@@ -155,9 +155,8 @@ const confirmOrder = document.querySelector("#confirm_order");
 //on inclue nos expressions régulière pour verifier les champs du formulaires
 const checkNumber = /[0-9]/;
 const checkSpecialCharacter = /[§!@#$%^&().?":{}|<>]/;
-//on recuperes les ids des produits dans le panier qu'on injecte dans notre tableau
+//on recuperes les ids des produits dans le panier qu'on injecte dans notre tableau si le panier n'est pas vide
 let products = [];
-
 if (productSavedInLs !== null) {
   for (let i = 0; i < productSavedInLs.length; i++) {
     products.push(productSavedInLs[i]._id);

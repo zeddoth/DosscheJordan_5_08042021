@@ -3,8 +3,15 @@ let cameras;
 
 //appel de l'API
 const fetchCameras = async () => {
-  cameras = await fetch("http://localhost:3000/api/cameras").then((res) => res.json());
+  cameras = await fetch("http://localhost:3000/api/cameras")
+    .then((res) => res.json())
+    .catch(() => console.log("erreur lié à l'API"));
 };
+
+//fonction de séparation des nombres
+function numberWithSpace(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
 
 //on affiche les produits
 const showCameras = async () => {
@@ -31,8 +38,3 @@ const showCameras = async () => {
     .join("");
 };
 showCameras();
-
-//fonction de séparation des nombres
-function numberWithSpace(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-}

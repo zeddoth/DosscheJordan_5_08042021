@@ -452,6 +452,7 @@ hr {
     padding: 3rem;
     border-radius: 1rem;
   }
+  /* TABLEAU */
   .tftable thead {
     display: none;
   }
@@ -477,6 +478,7 @@ hr {
     display: block;
     text-decoration: underline;
   }
+  /* FIN TABLEAU */
   .footer {
     flex-direction: column;
     display: flex;
