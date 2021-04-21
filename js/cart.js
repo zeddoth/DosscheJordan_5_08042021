@@ -2,12 +2,10 @@
 let productSavedInLs = JSON.parse(localStorage.getItem("product"));
 
 //************affichage des produits dans le panier*************
-
 //fonction régulière pour l'espacement des nombres
-function numberWithSpace(x) {
+const numberWithSpace = (x) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-}
-
+};
 //on cible les id ou on va injecter notre contenu
 const productInCart = document.querySelector("#cart_product");
 const productQuantity = document.querySelector("#tftable_quantity");
@@ -153,97 +151,111 @@ if (productSavedInLs) {
 //on cible l'ID de notre bouton "passez la commande"
 const confirmOrder = document.querySelector("#confirm_order");
 //on inclue nos expressions régulière pour verifier les champs du formulaires
-const checkNumber = /[0-9]/;
-const checkSpecialCharacter = /[§!@#$%^&().?":{}|<>]/;
+
 //on recuperes les ids des produits dans le panier qu'on injecte dans notre tableau si le panier n'est pas vide
 let products = [];
+let contact;
 if (productSavedInLs !== null) {
   for (let i = 0; i < productSavedInLs.length; i++) {
     products.push(productSavedInLs[i]._id);
   }
 }
-//on verifie que les données envoyé dans le tableau sont correct
-// console.log(productSavedInLs);
-// console.log(products);
+
+const popBadForm = (errorMessage) => {
+  const badForm = document.querySelector("#bad_form");
+  const badFormP = document.querySelector("#bad_form_p");
+  //paramètre pour inserer le message sous forme de "string"
+  badFormP.innerHTML = errorMessage;
+  badForm.classList.remove("run_pop");
+  void badForm.offsetWidth;
+  badForm.classList.add("run_pop");
+};
+const formVerification = () => {
+  //on cible les id pour le formulaire
+  const checkNumber = /[0-9]/;
+  const checkSpecialCharacter = /[§!@#$%^&().?":{}|<>]/;
+  const firstNameForm = document.querySelector("#firstname").value;
+  const lastNameForm = document.querySelector("#lastname").value;
+  const addressForm = document.querySelector("#address").value;
+  const cityForm = document.querySelector("#city").value;
+  const emailForm = document.querySelector("#email").value;
+  const atPosition = emailForm.indexOf("@");
+  const dotPosition = emailForm.lastIndexOf(".");
+  if (
+    firstNameForm === "" ||
+    lastNameForm === "" ||
+    addressForm === "" ||
+    cityForm === "" ||
+    emailForm === ""
+  ) {
+    popBadForm("Veuillez verifier que les champs ne sont pas vide");
+    return false;
+  }
+  //j'execute la suite du code seulement si les champs ne sont pas des nombres
+  if (
+    !isNaN(firstNameForm) ||
+    !isNaN(lastNameForm) ||
+    !isNaN(cityForm) ||
+    !isNaN(addressForm) ||
+    !isNaN(emailForm)
+  ) {
+    popBadForm("Veuillez verifier que les champs ne sont pas des nombres");
+    return false;
+  }
+  //j'execute la suite du code seulement si les champs "Prenom","Nom" & "Ville" ne contiennent pas de caractères spéciaux ou nombres
+  if (
+    firstNameForm.match(checkSpecialCharacter) ||
+    lastNameForm.match(checkSpecialCharacter) ||
+    cityForm.match(checkSpecialCharacter) ||
+    firstNameForm.match(checkNumber) ||
+    lastNameForm.match(checkNumber) ||
+    cityForm.match(checkNumber)
+  ) {
+    popBadForm(
+      "Veuillez verifier que les champs 'Prénom','Nom' et 'Ville' ne contiennent pas de nombres ou caractères spéciaux"
+    );
+    return false;
+  }
+  //j'execute la suite du code seulement SI l'email est est correctement saisi , comme "exemple@gmail.com"
+  if (atPosition < 1 || dotPosition < atPosition + 2 || dotPosition + 2 >= emailForm.length) {
+    popBadForm("Veuillez verifiez le champ de votre email");
+    return false;
+  }
+  contact = {
+    firstName: firstNameForm,
+    lastName: lastNameForm,
+    address: addressForm,
+    city: cityForm,
+    email: emailForm,
+  };
+};
+
+const postAPI = () => {
+  fetch("http://localhost:3000/api/cameras/order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ contact, products }),
+  })
+    .then((response) => response.json())
+    .then((order) => {
+      //on verifie le contenue le commande(order)
+      // console.log(order);
+      localStorage.setItem("order", JSON.stringify(order));
+      window.location.pathname = "./client/order.html";
+    })
+    .catch(() => console.log("erreur lié à l'API"));
+};
+
 if (confirmOrder !== null) {
   confirmOrder.addEventListener("click", () => {
-    //on cible les ID pour recuperer les values des input
-    const firstNameForm = document.querySelector("#firstname").value;
-    const lastNameForm = document.querySelector("#lastname").value;
-    const addressForm = document.querySelector("#address").value;
-    const cityForm = document.querySelector("#city").value;
-    const emailForm = document.querySelector("#email").value;
-    const atPosition = emailForm.indexOf("@");
-    const dotPosition = emailForm.lastIndexOf(".");
-    //on verifie les "values" des input afin qu'ils sois validés avant l’envoi des données au serveur.
-    //j'execute la suite du code seulement SI les champs ne sont pas vide
-    if (
-      firstNameForm === "" ||
-      lastNameForm === "" ||
-      addressForm === "" ||
-      cityForm === "" ||
-      emailForm === ""
-    ) {
-      alert("Veuillez verifiez que les champs du formulaire ne sont pas vides");
-      return false;
+    //on recupere les information dans un objet après verification
+    formVerification();
+    //j'envoie les données à l'API avec la méthode "POST" si l'objet "contact" est défini
+    if (contact !== undefined) {
+      postAPI();
+      localStorage.clear();
     }
-    //j'execute la suite du code seulement si les champs ne sont pas des nombres
-    if (
-      !isNaN(firstNameForm) ||
-      !isNaN(lastNameForm) ||
-      !isNaN(cityForm) ||
-      !isNaN(addressForm) ||
-      !isNaN(emailForm)
-    ) {
-      alert("Les champs (Prénom,Nom ou Ville) ne peuvent pas être des nombres");
-      return false;
-    }
-    //j'execute la suite du code seulement si les champs "Prenom","Nom" & "Ville" ne contiennent pas de caractères spéciaux ou nombres
-    if (
-      firstNameForm.match(checkSpecialCharacter) ||
-      lastNameForm.match(checkSpecialCharacter) ||
-      cityForm.match(checkSpecialCharacter) ||
-      firstNameForm.match(checkNumber) ||
-      lastNameForm.match(checkNumber) ||
-      cityForm.match(checkNumber)
-    ) {
-      alert(
-        "Les champs (Prénom,Nom ou Ville) ne peuvent pas contenir de caractères spéciaux ni de nombres"
-      );
-      return false;
-    }
-    //j'execute la suite du code seulement SI l'email est est correctement saisi , comme "exemple@gmail.com"
-    if (atPosition < 1 || dotPosition < atPosition + 2 || dotPosition + 2 >= emailForm.length) {
-      alert("Entrer une adresse mail valide");
-      return false;
-    }
-    //on recupere les information dans un objet
-    const contact = {
-      firstName: firstNameForm,
-      lastName: lastNameForm,
-      address: addressForm,
-      city: cityForm,
-      email: emailForm,
-    };
-    //j'envoie les données à l'API avec la méthode "POST"
-    const postAPI = () => {
-      fetch("http://localhost:3000/api/cameras/order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ contact, products }),
-      })
-        .then((response) => response.json())
-        .then((order) => {
-          //on verifie le contenue le commande(order)
-          // console.log(order);
-          localStorage.setItem("order", JSON.stringify(order));
-          window.location.pathname = "./client/order.html";
-        })
-        .catch(() => console.log("erreur lié à l'API"));
-    };
-    postAPI();
-    localStorage.clear();
   });
 }

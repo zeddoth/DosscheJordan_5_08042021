@@ -1,9 +1,9 @@
-//on cible l'id ou ont veut injecter notre contenu
-const orderConfirmed = document.querySelector("#order");
-//on cible le "localStorage" pour pouvoir travailler avec
-const orderSavedInLs = JSON.parse(localStorage.getItem("order"));
-//on creer une fonction pour afficher le récap de notre commande et du renvoie de l'API
+//fonction pour afficher le récap de notre commande renvoyer par l'API
 const showOrder = () => {
+  //on cible le "localStorage" pour pouvoir travailler avec
+  const orderSavedInLs = JSON.parse(localStorage.getItem("order"));
+  //on cible l'id ou ont veut injecter notre contenu
+  const orderConfirmed = document.querySelector("#order");
   orderConfirmed.innerHTML = `
     <div class="order_completed">
         <h2>Merci ${orderSavedInLs.contact.firstName} pour votre commande et votre confiance</h2>
@@ -24,7 +24,7 @@ const showOrder = () => {
 };
 //on affiche la commande du client
 showOrder();
-//on cible l'id de notre lien pour pouvoir vider le localstorage au retour à l'acceuil
+//on cible l'id de notre bouton "Retour à l'acceuil" pour pouvoir vider le localstorage au retour à l'acceuil
 const orderBtn = document.querySelector(".order_completed_btn");
 //on écoute au click sur le bouton "Retourner à l'acceuil"
 orderBtn.addEventListener("click", () => {

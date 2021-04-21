@@ -1,9 +1,8 @@
-//on cible le "localStorage" pour pouvoir travailler avec
 let productSavedInLs = JSON.parse(localStorage.getItem("product"));
 //on cible l'ID ou on va injecter notre contenue
 const totalQuantitySpan = document.querySelector("#cart_total_quantity");
 const cartBubble = document.querySelector(".cart_bubble");
-
+//fonction pour calculer la somme de la quantités des produits sauvegarder dans le panier
 const totalOfProduct = () => {
   //on declare les variables pour les sommes
   let sumQuantity = 0;
