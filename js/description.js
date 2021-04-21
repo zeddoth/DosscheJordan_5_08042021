@@ -38,8 +38,8 @@ const showProduct = async () => {
                 <p class="product-description">Description : </p>
                 <p>${product.description}</p>
             </div>
-            <button type="submit" id="add_to_cart" name="add_to_cart" onclick="deleteStyle()"><h3>Ajouter au panier</h3></button>
-            <div id="add_confirm" class="add_confirm">
+            <button type="submit" id="add_to_cart" name="add_to_cart"><h3>Ajouter au panier</h3></button>
+            <div id="add_confirm">
               <h3>Votre produit a été ajouté au panier</h3>
             </div>
         </div>
@@ -61,7 +61,7 @@ const cart = async () => {
   const idForm = document.querySelector("#lens-select");
   const addToCartBtn = document.querySelector("#add_to_cart");
   const cartBubble = document.querySelector(".cart_bubble");
-  const addedToCart = document.querySelector(".add_confirm");
+  const addedToCart = document.querySelector("#add_confirm");
   //quand je clique sur le bouton "ajouter au panier"
   addToCartBtn.addEventListener("click", (event) => {
     event.preventDefault();
@@ -116,7 +116,9 @@ const cart = async () => {
     }
     cartBubble.style.display = "flex";
     totalQuantitySpan.innerHTML = sumQuantity;
-    addedToCart.style.animation = "pop 3s";
+    addedToCart.classList.remove("run_added_to_cart");
+    void addedToCart.offsetWidth;
+    addedToCart.classList.add("run_added_to_cart");
   });
 };
 cart();

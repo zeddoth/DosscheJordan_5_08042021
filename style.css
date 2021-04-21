@@ -151,7 +151,7 @@ hr {
   transform: scale(1.01);
   background-color: #272626;
 }
-.add_confirm {
+#add_confirm {
   opacity: 0;
   text-align: center;
   margin-top: 2rem;
@@ -163,6 +163,9 @@ hr {
   background-color: rgb(90, 192, 129, 0.9);
   border-radius: 2rem;
   border: solid 3px rgb(75, 160, 108, 0.9);
+}
+.run_added_to_cart {
+  animation: pop 2s;
 }
 .cart {
   margin: 2rem;
@@ -323,8 +326,11 @@ hr {
 }
 .cart_form_btn_order:hover {
   transition: 0.3s;
-  transform: scale(1.1);
+  transform: scale(1.05);
   background-color: #272626;
+}
+.cart_form_btn_order:focus {
+  outline: none;
 }
 .cart-span {
   position: relative;
@@ -425,7 +431,7 @@ hr {
   text-decoration: underline;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1000px) {
   .navbar {
     flex-direction: column;
   }
@@ -451,6 +457,9 @@ hr {
     background-color: rgba(0, 0, 0, 0.05);
     padding: 3rem;
     border-radius: 1rem;
+  }
+  .contact_form_container {
+    flex-direction: column;
   }
   /* TABLEAU */
   .tftable thead {
