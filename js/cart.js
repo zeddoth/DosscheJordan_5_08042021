@@ -160,7 +160,7 @@ if (productSavedInLs !== null) {
     products.push(productSavedInLs[i]._id);
   }
 }
-
+//fonction pour afficher un message d'erreur
 const popBadForm = (errorMessage) => {
   const badForm = document.querySelector("#bad_form");
   const badFormP = document.querySelector("#bad_form_p");
@@ -170,17 +170,17 @@ const popBadForm = (errorMessage) => {
   void badForm.offsetWidth;
   badForm.classList.add("run_pop");
 };
+//fonction pour verifier le formulaire
 const formVerification = () => {
   //on cible les id pour le formulaire
   const checkNumber = /[0-9]/;
   const checkSpecialCharacter = /[§!@#$%^&().?":{}|<>]/;
+  const checkEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
   const firstNameForm = document.querySelector("#firstname").value;
   const lastNameForm = document.querySelector("#lastname").value;
   const addressForm = document.querySelector("#address").value;
   const cityForm = document.querySelector("#city").value;
   const emailForm = document.querySelector("#email").value;
-  const atPosition = emailForm.indexOf("@");
-  const dotPosition = emailForm.lastIndexOf(".");
   if (
     firstNameForm === "" ||
     lastNameForm === "" ||
@@ -217,8 +217,8 @@ const formVerification = () => {
     return false;
   }
   //j'execute la suite du code seulement SI l'email est est correctement saisi , comme "exemple@gmail.com"
-  if (atPosition < 1 || dotPosition < atPosition + 2 || dotPosition + 2 >= emailForm.length) {
-    popBadForm("Veuillez verifiez le champ de votre email");
+  if (!emailForm.match(checkEmail)) {
+    popBadForm("Veuillez verifiez votre email");
     return false;
   }
   contact = {
@@ -229,7 +229,7 @@ const formVerification = () => {
     email: emailForm,
   };
 };
-
+//fonction pour envoyer les données à l'API avec la méthode "POST"
 const postAPI = () => {
   fetch("http://localhost:3000/api/cameras/order", {
     method: "POST",
@@ -240,8 +240,6 @@ const postAPI = () => {
   })
     .then((response) => response.json())
     .then((order) => {
-      //on verifie le contenue le commande(order)
-      // console.log(order);
       localStorage.setItem("order", JSON.stringify(order));
       window.location.pathname = "./client/order.html";
     })
