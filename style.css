@@ -165,7 +165,7 @@ hr {
   border: solid 3px rgb(75, 160, 108, 0.9);
 }
 .run_pop {
-  animation: pop 2s;
+  animation: pop 4s;
 }
 .cart {
   margin: 2rem;

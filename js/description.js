@@ -99,6 +99,7 @@ const addProductInLs = () => {
   }
   //convertir les données au format "JSON" qui sont dans le "localStorage" en Javascript
   localStorage.setItem("product", JSON.stringify(productSavedInLs));
+  console.log(productSavedInLs);
 };
 //fonction du panier
 const cart = async () => {
